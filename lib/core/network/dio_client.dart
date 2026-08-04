@@ -16,15 +16,17 @@ class DioClient {
       requestHeader: true,
       requestBody: true,
       responseBody: true,
-    ));
+    )); //prints every request response for easier debugging
 
+
+//runs before every outgoing request 
     dio.interceptors.add(InterceptorsWrapper(
       onRequest: (options, handler) async {
         final token = await secureStorage.read(key: accessTokenKey);
         if (token != null && token.isNotEmpty) {
           options.headers['Authorization'] = 'Bearer $token';
         }
-        return handler.next(options);
+        return handler.next(options); //lets a request continue after an interceptor runs
       },
     ));
   }
