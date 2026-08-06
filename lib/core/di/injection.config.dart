@@ -17,6 +17,10 @@ import 'package:office_task/core/network/dio_client.dart' as _i184;
 import 'package:office_task/features/auth/data/auth_repository.dart' as _i57;
 import 'package:office_task/features/auth/presentation/cubit/auth_cubit.dart'
     as _i427;
+import 'package:office_task/features/product/data/product_repository.dart'
+    as _i645;
+import 'package:office_task/features/product/presentation/cubit/product_list_cubit.dart'
+    as _i664;
 
 extension GetItInjectableX on _i174.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -35,11 +39,17 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i57.AuthRepository>(
       () => _i57.AuthRepository(gh<_i184.DioClient>()),
     );
+    gh.lazySingleton<_i645.ProductRepository>(
+      () => _i645.ProductRepository(gh<_i184.DioClient>()),
+    );
     gh.factory<_i427.AuthCubit>(
       () => _i427.AuthCubit(
         gh<_i57.AuthRepository>(),
         gh<_i558.FlutterSecureStorage>(),
       ),
+    );
+    gh.factory<_i664.ProductListCubit>(
+      () => _i664.ProductListCubit(gh<_i645.ProductRepository>()),
     );
     return this;
   }
