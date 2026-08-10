@@ -14,11 +14,15 @@ import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:office_task/core/di/register_module.dart' as _i417;
 import 'package:office_task/core/network/dio_client.dart' as _i184;
+import 'package:office_task/core/services/local_notification_service.dart'
+    as _i1003;
 import 'package:office_task/features/auth/data/auth_repository.dart' as _i57;
 import 'package:office_task/features/auth/presentation/cubit/auth_cubit.dart'
     as _i427;
 import 'package:office_task/features/product/data/product_repository.dart'
     as _i645;
+import 'package:office_task/features/product/presentation/cubit/product_detail_cubit.dart'
+    as _i502;
 import 'package:office_task/features/product/presentation/cubit/product_list_cubit.dart'
     as _i664;
 
@@ -32,6 +36,9 @@ extension GetItInjectableX on _i174.GetIt {
     final registerModule = _$RegisterModule();
     gh.lazySingleton<_i558.FlutterSecureStorage>(
       () => registerModule.secureStorage,
+    );
+    gh.lazySingleton<_i1003.LocalNotificationService>(
+      () => _i1003.LocalNotificationService(),
     );
     gh.lazySingleton<_i184.DioClient>(
       () => _i184.DioClient(gh<_i558.FlutterSecureStorage>()),
@@ -47,6 +54,9 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i57.AuthRepository>(),
         gh<_i558.FlutterSecureStorage>(),
       ),
+    );
+    gh.factory<_i502.ProductDetailCubit>(
+      () => _i502.ProductDetailCubit(gh<_i645.ProductRepository>()),
     );
     gh.factory<_i664.ProductListCubit>(
       () => _i664.ProductListCubit(gh<_i645.ProductRepository>()),

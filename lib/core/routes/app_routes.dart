@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:office_task/features/auth/presentation/screen/login_screen.dart';
 import 'package:office_task/features/auth/presentation/screen/splash_screen.dart';
-import 'package:office_task/features/home/presentation/screen/home_screen.dart';
+import 'package:office_task/features/product/presentation/screen/home_screen.dart';
 
 
 

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:office_task/features/product/domain/model/product.dart';
 import 'package:office_task/features/product/presentation/cubit/product_list_cubit.dart';
 import 'package:office_task/features/product/presentation/cubit/product_list_state.dart';
+import 'package:office_task/features/product/presentation/screen/product_detail.dart';
 import 'package:office_task/widget/bottom_navigation.dart';
 
 import '../../../../core/di/injection.dart';
@@ -161,47 +162,56 @@ class _HomeScreenBodyState extends State<_HomeScreenBody> {
                 }
             
                 final product = items[index];
-                return Card(
-            color: Color(0xFF1B1B1B),
-            clipBehavior: Clip.antiAlias,
-            elevation: 0,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(14),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-               Expanded(
-              child: Container(
-                color: Colors.white,
-                child: Image.network(
-            product.thumbnail,
-            width: double.infinity,
-            fit: BoxFit.cover,
-                ),
+                return InkWell(
+                          onTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => ProductDetailScreen(productId: product.id),
               ),
-            ),
-                Padding(
-                  padding: const EdgeInsets.all(8),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        product.title,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(color: Colors.white,fontWeight: FontWeight.w600, fontSize: 13),
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        '\Rs ${product.price}',
-                        style: const TextStyle(color: (Color(0xFFFF4400)), fontWeight: FontWeight.bold),
-                      ),
-                    ],
+            );
+          },
+                  child: Card(
+                              color: Color(0xFF1B1B1B),
+                              clipBehavior: Clip.antiAlias,
+                              elevation: 0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(14),
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                 Expanded(
+                                child: Container(
+                  color: Colors.white,
+                  child: Image.network(
+                              product.thumbnail,
+                              width: double.infinity,
+                              fit: BoxFit.cover,
                   ),
-                ),
-              ],
-            ),
+                                ),
+                              ),
+                  Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          product.title,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(color: Colors.white,fontWeight: FontWeight.w600, fontSize: 13),
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          'Rs ${product.price}',
+                          style: const TextStyle(color: (Color(0xFFFF4400)), fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  ),
+                                ],
+                              ),
+                  ),
                 );
               },
             ),
