@@ -16,6 +16,8 @@ import 'package:office_task/core/di/register_module.dart' as _i417;
 import 'package:office_task/core/network/dio_client.dart' as _i184;
 import 'package:office_task/core/services/local_notification_service.dart'
     as _i1003;
+import 'package:office_task/core/services/push_notification_service.dart'
+    as _i1045;
 import 'package:office_task/features/auth/data/auth_repository.dart' as _i57;
 import 'package:office_task/features/auth/presentation/cubit/auth_cubit.dart'
     as _i427;
@@ -39,6 +41,10 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i1003.LocalNotificationService>(
       () => _i1003.LocalNotificationService(),
+    );
+    gh.lazySingleton<_i1045.PushNotificationService>(
+      () =>
+          _i1045.PushNotificationService(gh<_i1003.LocalNotificationService>()),
     );
     gh.lazySingleton<_i184.DioClient>(
       () => _i184.DioClient(gh<_i558.FlutterSecureStorage>()),

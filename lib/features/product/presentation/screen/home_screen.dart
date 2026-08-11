@@ -4,7 +4,7 @@ import 'package:office_task/features/product/domain/model/product.dart';
 import 'package:office_task/features/product/presentation/cubit/product_list_cubit.dart';
 import 'package:office_task/features/product/presentation/cubit/product_list_state.dart';
 import 'package:office_task/features/product/presentation/screen/product_detail.dart';
-import 'package:office_task/widget/bottom_navigation.dart';
+
 
 import '../../../../core/di/injection.dart';
 import '../../../../core/routes/app_routes.dart';
@@ -64,32 +64,32 @@ class _HomeScreenBodyState extends State<_HomeScreenBody> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFF1B1B1B),
-      bottomNavigationBar: CustomBottomNavigation(),
+     // bottomNavigationBar: CustomBottomNavigation(),
       appBar: AppBar(
   backgroundColor: const Color(0xFF1B1B1B),
   elevation: 0,
   scrolledUnderElevation: 0,
-  title: Container(
-    height: 40,
-    padding: const EdgeInsets.symmetric(horizontal: 12),
-    decoration: BoxDecoration(
-      border: Border.all(
-        color: const Color(0xFFFF4400),
-        width: 1.5,
-      ),
-      borderRadius: BorderRadius.circular(10),
-    ),
-    child: Row(
-      children: [
-        const Icon(Icons.search, color: Colors.white70, size: 20),
-        const SizedBox(width: 8),
-        Text(
-          'Search products...',
-          style: TextStyle(color: Colors.white70, fontSize: 14),
-        ),
-      ],
-    ),
-  ),
+  // title: Container(
+  //   height: 40,
+  //   padding: const EdgeInsets.symmetric(horizontal: 12),
+  //   decoration: BoxDecoration(
+  //     border: Border.all(
+  //       color: const Color(0xFFFF4400),
+  //       width: 1.5,
+  //     ),
+  //     borderRadius: BorderRadius.circular(10),
+  //   ),
+  //   child: Row(
+  //     children: [
+  //       const Icon(Icons.search, color: Colors.white70, size: 20),
+  //       const SizedBox(width: 8),
+  //       Text(
+  //         'Search products...',
+  //         style: TextStyle(color: Colors.white70, fontSize: 14),
+  //       ),
+  //     ],
+  //   ),
+  // ),
    actions: [
           IconButton(
             icon: const Icon(Icons.logout),
